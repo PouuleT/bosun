@@ -130,7 +130,7 @@ func (d *dataAccess) Search_AddMetricTagSet(metric, tagSet string, time int64) e
 	return err
 }
 func (d *dataAccess) Search_GetMetricTagSets(metric string, tags opentsdb.TagSet) (map[string]int64, error) {
-	defer collect.StartTimer("redis", opentsdb.TagSet{"op": "GetTagValues"})()
+	defer collect.StartTimer("redis", opentsdb.TagSet{"op": "GetMetricTagSets"})()
 	conn := d.GetConnection()
 	defer conn.Close()
 
