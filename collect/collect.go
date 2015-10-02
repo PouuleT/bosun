@@ -450,8 +450,10 @@ func collect() {
 			}
 			tchan <- dp
 		}
-		for _, am := range aggs {
-			am.Process(now)
+		if !DisableDefaultCollectors {
+			for _, am := range aggs {
+				am.Process(now)
+			}
 		}
 		puts = make(map[string]*putMetric)
 		aggs = make(map[string]*agMetric)
